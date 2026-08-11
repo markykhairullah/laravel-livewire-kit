@@ -3,7 +3,7 @@
 @endphp
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="dark" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
         <title>{{ $title ?? config('app.name') }}</title>
@@ -20,20 +20,26 @@
 
         {{-- Base: Fonts --}}
         @fonts
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+              rel="stylesheet">
 
         {{-- Base: Vite --}}
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         {{-- Base: Package Styles --}}
         @livewireStyles
+        @fluxAppearance
     </head>
 
-    <body>
+    <body class="min-h-screen bg-white dark:bg-neutral-900 antialiased">
         {{-- Base: Contents --}}
         {{ $slot }}
 
         {{-- Base: Package Scripts --}}
         @livewireScripts
+        @fluxScripts
 
         {{-- Base: Scripts --}}
         <script>
